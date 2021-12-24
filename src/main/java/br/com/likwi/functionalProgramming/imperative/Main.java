@@ -43,6 +43,14 @@ public class Main {
         for (Person f : females) {
             System.out.println(f);
         }
+
+        System.out.println("###########");
+
+        //declarative approach
+        people.stream()
+                .filter(person -> FEMALE.equals(person.gender))
+//                .collect(Collectors.toList())
+                .forEach(System.out::println);
     }
 
     @Data
