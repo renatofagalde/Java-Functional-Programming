@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.text.MessageFormat;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class _Consumer {
@@ -26,10 +27,19 @@ public class _Consumer {
         System.out.println("********   Functional Interface  **********");
         greetCustumerConsumer.accept(ale);
         greetCustumerConsumer.accept(bia);
+
+        greetCustumerBiConsumer.accept(bia, Boolean.FALSE);
+        greetCustumerBiConsumer.accept(bia, Boolean.TRUE);
     }
 
-    static Consumer<Customer> greetCustumerConsumer = customer -> System.out.println(MessageFormat.format("Hello {0}, thanks for registering phone number {1}",
-            customer.getName(), customer.getName()));
+    static Consumer<Customer> greetCustumerConsumer = customer -> System.out.println(
+            MessageFormat.format("Hello {0}, thanks for registering phone number {1}",
+                    customer.getName(), customer.getCustomerPhoneNumber()));
+
+    static BiConsumer<Customer, Boolean> greetCustumerBiConsumer = (customer, showPhoneNumber) -> System.out.println(
+            MessageFormat.format("Hello {0}, thanks for registering phone number {1}",
+                    customer.getName(),
+                    (showPhoneNumber ? customer.getCustomerPhoneNumber() : "***")));
 
 
     static void greetCustomer(Customer customer) {
