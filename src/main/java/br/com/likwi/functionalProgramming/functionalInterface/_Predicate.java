@@ -3,6 +3,7 @@ package br.com.likwi.functionalProgramming.functionalInterface;
 import java.text.MessageFormat;
 import java.util.function.Predicate;
 
+//function return a void
 public class _Predicate {
 
     public static void main(String[] args) {
