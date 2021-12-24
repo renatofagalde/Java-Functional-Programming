@@ -8,12 +8,14 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static br.com.likwi.functionalProgramming.imperative.Main.Gender.FEMALE;
 
 public class Main {
 
     static Faker faker = new Faker();
+    static final Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
 
     public static void main(String[] args) {
         final List<Person> people = List.of(Person.builder()
@@ -47,8 +49,9 @@ public class Main {
         System.out.println("###########");
 
         //declarative approach
+
         people.stream()
-                .filter(person -> FEMALE.equals(person.gender))
+                .filter(personPredicate)
 //                .collect(Collectors.toList())
                 .forEach(System.out::println);
     }
